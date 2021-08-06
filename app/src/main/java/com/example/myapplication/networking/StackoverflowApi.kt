@@ -6,5 +6,5 @@ import retrofit2.http.Query
 
 interface StackoverflowApi {
     @GET("/questions?order=desc&sort=activity&site=stackoverflow")
-    fun fetchLastActiveQuestions(@Query("pagesize") pageSize: Int?): Call<QuestionsListResponseSchema?>?
+    fun fetchLastActiveQuestions(@Query("pagesize") pageSize: Int?): Call<QuestionsListResponseSchema>
 }
