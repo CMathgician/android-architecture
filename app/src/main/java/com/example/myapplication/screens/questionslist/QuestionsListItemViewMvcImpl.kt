@@ -7,18 +7,19 @@ import android.widget.TextView
 import androidx.annotation.IdRes
 import com.example.myapplication.R
 import com.example.myapplication.questions.Question
+import com.example.myapplication.screens.common.BaseViewMvcImpl
 import com.example.myapplication.screens.questionslist.QuestionsListItemViewMvc.Listener
 
 class QuestionsListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) :
+    BaseViewMvcImpl(),
     QuestionsListItemViewMvc {
 
-    private val rootView: View
     private val listeners: HashSet<Listener> = HashSet(1)
     private lateinit var question: Question
     private val txtTitle: TextView
 
     init {
-        rootView = inflater.inflate(R.layout.question_list_item, parent, false)
+        setRootView(inflater.inflate(R.layout.question_list_item, parent, false))
         txtTitle = findViewById(R.id.txt_title)
         getRootView().setOnClickListener {
             for (listener in listeners) {
@@ -26,10 +27,6 @@ class QuestionsListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?)
             }
         }
     }
-
-    private fun <T : View?> findViewById(@IdRes id: Int): T = getRootView().findViewById(id)
-
-    override fun getRootView(): View = rootView
 
     override fun registerListener(listener: Listener) {
         listeners.add(listener)
