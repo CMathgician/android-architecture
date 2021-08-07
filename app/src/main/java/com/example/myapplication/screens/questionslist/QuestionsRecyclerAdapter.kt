@@ -11,6 +11,9 @@ class QuestionsRecyclerAdapter(
 ) :
     RecyclerView.Adapter<QuestionsRecyclerAdapter.MyViewHolder>(),
     QuestionsListItemViewMvc.Listener {
+
+    private var questions: List<Question> = listOf()
+
     interface Listener {
         fun onQuestionClicked(question: Question)
     }
@@ -19,7 +22,6 @@ class QuestionsRecyclerAdapter(
         RecyclerView.ViewHolder(viewMvc.getRootView()) {
     }
 
-    private var questions: List<Question> = listOf()
     fun bindQuestions(questions: List<Question>) {
         this.questions = questions
         notifyDataSetChanged()
