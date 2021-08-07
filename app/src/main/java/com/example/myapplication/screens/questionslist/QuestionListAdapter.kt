@@ -17,22 +17,29 @@ class QuestionsListAdapter(
         fun onQuestionClicked(question: Question)
     }
 
+    private class ViewHolder {
+        lateinit var txtTitle: TextView
+    }
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
         if (view == null) {
             view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.question_list_item, parent, false)
+            val viewHolder = ViewHolder()
+            viewHolder.txtTitle = view.findViewById(R.id.txt_title)
+            view.tag = viewHolder
         }
 
         val question: Question = getItem(position)!!
 
         // bind the data to views
-        val txtTitle = view!!.findViewById<TextView>(R.id.txt_title)
-        txtTitle.text = question.title
+        val viewHolder: ViewHolder = view?.tag as ViewHolder
+        viewHolder.txtTitle.text = question.title
 
         // set listener
-        view.setOnClickListener { onQuestionClicked(question) }
-        return view
+        view?.setOnClickListener { onQuestionClicked(question) }
+        return view!!
     }
 
     private fun onQuestionClicked(question: Question) {
