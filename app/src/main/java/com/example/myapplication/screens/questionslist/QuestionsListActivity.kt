@@ -28,13 +28,14 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
 
         viewMvc = QuestionsListViewMvcImpl(LayoutInflater.from(this), null)
         viewMvc.registerListener(this)
-        setContentView(viewMvc.getRootView())
 
         stackoverflowApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(StackoverflowApi::class.java)
+
+        setContentView(viewMvc.getRootView())
     }
 
     override fun onStart() {
@@ -49,7 +50,7 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
                     call: Call<QuestionsListResponseSchema>,
                     response: Response<QuestionsListResponseSchema>
                 ) {
-                    if (response.isSuccessful()) {
+                    if (response.isSuccessful) {
                         response.body()?.questions?.let { bindQuestions(it) }
                     } else {
                         networkCallFailed()
