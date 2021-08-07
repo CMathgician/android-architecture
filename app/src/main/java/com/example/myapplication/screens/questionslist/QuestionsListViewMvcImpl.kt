@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.questions.Question
+import com.example.myapplication.screens.common.BaseObservableViewMvcImpl
 import com.example.myapplication.screens.common.BaseViewMvcImpl
 import com.example.myapplication.screens.questionslist.QuestionsListViewMvc.Listener
 
-class QuestionsListsViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) : BaseViewMvcImpl(),
+class QuestionsListViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) : BaseObservableViewMvcImpl<Listener>(),
     QuestionsListViewMvc, QuestionsRecyclerAdapter.Listener {
 
     private var recyclerView: RecyclerView
     private var adapter: QuestionsRecyclerAdapter
-    private val listeners: HashSet<Listener> = HashSet(1)
 
     init {
         setRootView(inflater.inflate(R.layout.questions_list, parent, false))
@@ -28,20 +28,12 @@ class QuestionsListsViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) : 
 
     }
 
-    override fun registerListener(listener: Listener) {
-        listeners.add(listener)
-    }
-
-    override fun unregisterListener(listener: Listener) {
-        listeners.remove(listener)
-    }
-
     override fun bindQuestions(questions: List<Question>) {
         adapter.bindQuestions(questions);
     }
 
     override fun onQuestionClicked(question: Question) {
-        for (listener in listeners) {
+        for (listener in getListeners()) {
             listener.onQuestionClicked(question)
         }
     }
