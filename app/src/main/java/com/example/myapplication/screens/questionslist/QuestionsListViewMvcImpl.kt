@@ -29,7 +29,7 @@ class QuestionsListViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) : B
     }
 
     override fun bindQuestions(questions: List<Question>) {
-        adapter.bindQuestions(questions);
+        adapter.bindQuestions(questions)
     }
 
     override fun onQuestionClicked(question: Question) {

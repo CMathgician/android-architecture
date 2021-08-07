@@ -19,8 +19,7 @@ class QuestionsRecyclerAdapter(
     }
 
     class MyViewHolder(val viewMvc: QuestionsListItemViewMvc) :
-        RecyclerView.ViewHolder(viewMvc.getRootView()) {
-    }
+        RecyclerView.ViewHolder(viewMvc.getRootView())
 
     fun bindQuestions(questions: List<Question>) {
         this.questions = questions

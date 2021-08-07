@@ -5,7 +5,7 @@ import com.example.myapplication.screens.common.ObservableViewMvc
 
 interface QuestionsListViewMvc : ObservableViewMvc<QuestionsListViewMvc.Listener> {
     interface Listener {
-        fun onQuestionClicked(clickedQuestion: Question)
+        fun onQuestionClicked(question: Question)
     }
 
     fun bindQuestions(questions: List<Question>)
