@@ -9,7 +9,6 @@ import androidx.annotation.IdRes
 import com.example.myapplication.R
 import com.example.myapplication.questions.Question
 import com.example.myapplication.screens.questionslist.QuestionListViewMvc.Listener
-import kotlin.collections.HashSet
 
 class QuestionListViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) :
     QuestionsListAdapter.OnQuestionClickListener, QuestionListViewMvc {
