@@ -17,16 +17,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class QuestionsListActivity : BaseActivity(), QuestionListViewMvc.Listener {
+class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
 
     private lateinit var stackoverflowApi: StackoverflowApi
 
-    private lateinit var viewMvc: QuestionListViewMvc
+    private lateinit var viewMvc: QuestionsListViewMvc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewMvc = QuestionListViewMvcImpl(LayoutInflater.from(this), null)
+        viewMvc = QuestionsListsViewMvcImpl(LayoutInflater.from(this), null)
         viewMvc.registerListener(this)
         setContentView(viewMvc.getRootView())
 

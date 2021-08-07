@@ -7,10 +7,10 @@ import android.widget.TextView
 import androidx.annotation.IdRes
 import com.example.myapplication.R
 import com.example.myapplication.questions.Question
-import com.example.myapplication.screens.questionslist.QuestionListItemViewMvc.Listener
+import com.example.myapplication.screens.questionslist.QuestionsListItemViewMvc.Listener
 
-class QuestionListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) :
-    QuestionListItemViewMvc {
+class QuestionsListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) :
+    QuestionsListItemViewMvc {
 
     private val rootView: View
     private val listeners: HashSet<Listener> = HashSet(1)
