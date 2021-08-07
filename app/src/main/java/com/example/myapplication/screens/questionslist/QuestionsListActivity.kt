@@ -21,7 +21,7 @@ class QuestionsListActivity : BaseActivity(), QuestionListViewMvc.Listener {
 
     private lateinit var stackoverflowApi: StackoverflowApi
 
-    private lateinit var viewMvc: QuestionListViewMvcImpl
+    private lateinit var viewMvc: QuestionListViewMvc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

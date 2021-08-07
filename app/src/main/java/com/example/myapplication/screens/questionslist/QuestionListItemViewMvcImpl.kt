@@ -9,7 +9,8 @@ import com.example.myapplication.R
 import com.example.myapplication.questions.Question
 import com.example.myapplication.screens.questionslist.QuestionListItemViewMvc.Listener
 
-class QuestionListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?): QuestionListItemViewMvc {
+class QuestionListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) :
+    QuestionListItemViewMvc {
 
     private val rootView: View
     private val listeners: HashSet<Listener> = HashSet(1)
@@ -26,7 +27,11 @@ class QuestionListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?):
         }
 
 
-        getRootView().setOnClickListener{ for (listener in listeners) }
+        getRootView().setOnClickListener {
+            for (listener in listeners) {
+                listener.onQuestionClicked(question)
+            }
+        }
     }
 
     private fun <T : View?> findViewById(@IdRes id: Int): T = getRootView().findViewById(id)
