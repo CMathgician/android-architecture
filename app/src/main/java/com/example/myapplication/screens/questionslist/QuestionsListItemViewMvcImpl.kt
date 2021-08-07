@@ -25,13 +25,6 @@ class QuestionsListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?)
                 listener.onQuestionClicked(question)
             }
         }
-
-
-        getRootView().setOnClickListener {
-            for (listener in listeners) {
-                listener.onQuestionClicked(question)
-            }
-        }
     }
 
     private fun <T : View?> findViewById(@IdRes id: Int): T = getRootView().findViewById(id)
