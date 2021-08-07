@@ -1,6 +1,7 @@
 package com.example.myapplication.screens.questionslist
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.ListView
 import android.widget.Toast
 import com.example.myapplication.R
@@ -17,20 +18,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class QuestionsListActivity : BaseActivity(), QuestionsListAdapter.OnQuestionClickListener {
+class QuestionsListActivity : BaseActivity(), QuestionListViewMvc.Listener {
 
-    private var mStackoverflowApi: StackoverflowApi? = null
+    private lateinit var stackoverflowApi: StackoverflowApi
 
-    private var mLstQuestions: ListView? = null
-    private var mQuestionsListAdapter: QuestionsListAdapter? = null
+    private lateinit var viewMvc: QuestionListViewMvc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.questions_list)
-        mLstQuestions = findViewById(R.id.list_view_questions)
-        mQuestionsListAdapter = QuestionsListAdapter(this, this)
-        mLstQuestions?.setAdapter(mQuestionsListAdapter)
-        mStackoverflowApi = Retrofit.Builder()
+
+        viewMvc = QuestionListViewMvc(LayoutInflater.from(this), null)
+        viewMvc.registerListener(this)
+        setContentView(viewMvc.getRootView())
+
+        stackoverflowApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -43,8 +44,8 @@ class QuestionsListActivity : BaseActivity(), QuestionsListAdapter.OnQuestionCli
     }
 
     private fun fetchQuestions() {
-        mStackoverflowApi?.fetchLastActiveQuestions(Constants.QUESTIONS_LIST_PAGE_SIZE)
-            ?.enqueue(object : Callback<QuestionsListResponseSchema> {
+        stackoverflowApi.fetchLastActiveQuestions(Constants.QUESTIONS_LIST_PAGE_SIZE)
+            .enqueue(object : Callback<QuestionsListResponseSchema> {
                 override fun onResponse(
                     call: Call<QuestionsListResponseSchema>,
                     response: Response<QuestionsListResponseSchema>
@@ -65,13 +66,14 @@ class QuestionsListActivity : BaseActivity(), QuestionsListAdapter.OnQuestionCli
     private fun bindQuestions(questionSchemas: List<QuestionSchema>) {
         val questions: MutableList<Question> = ArrayList<Question>(questionSchemas.size)
         for (questionSchema in questionSchemas) {
-            questions.add(Question(questionSchema.questionId.toString(),
-                questionSchema.title.toString()
-            ))
+            questions.add(
+                Question(
+                    questionSchema.questionId.toString(),
+                    questionSchema.title.toString()
+                )
+            )
         }
-        mQuestionsListAdapter!!.clear()
-        mQuestionsListAdapter!!.addAll(questions)
-        mQuestionsListAdapter!!.notifyDataSetChanged()
+        viewMvc.bindQuestions(questions)
     }
 
     private fun networkCallFailed() {
