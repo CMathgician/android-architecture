@@ -2,7 +2,6 @@ package com.example.myapplication.screens.questionslist
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.ListView
 import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.common.Constants
@@ -22,12 +21,12 @@ class QuestionsListActivity : BaseActivity(), QuestionListViewMvc.Listener {
 
     private lateinit var stackoverflowApi: StackoverflowApi
 
-    private lateinit var viewMvc: QuestionListViewMvc
+    private lateinit var viewMvc: QuestionListViewMvcImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewMvc = QuestionListViewMvc(LayoutInflater.from(this), null)
+        viewMvc = QuestionListViewMvcImpl(LayoutInflater.from(this), null)
         viewMvc.registerListener(this)
         setContentView(viewMvc.getRootView())
 
