@@ -1,15 +1,12 @@
 package com.example.myapplication.screens.questionslist
 
-import android.view.View
 import com.example.myapplication.questions.Question
-import com.example.myapplication.screens.common.BaseViewMvc
+import com.example.myapplication.screens.common.ObservableViewMvc
 
-interface QuestionsListViewMvc: BaseViewMvc {
+interface QuestionsListViewMvc : ObservableViewMvc<QuestionsListViewMvc.Listener> {
     interface Listener {
         fun onQuestionClicked(clickedQuestion: Question)
     }
 
-    fun registerListener(listener: Listener)
-    fun unregisterListener(listener: Listener)
     fun bindQuestions(questions: List<Question>)
 }
