@@ -2,11 +2,18 @@ package com.example.myapplication.screens.common
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.CustomApplication
-import com.example.myapplication.common.dependencyinjection.CompositionRoot
+import com.example.myapplication.common.dependencyinjection.ControllerCompositionRoot
 
-open class BaseActivity: AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
-    protected fun getCompositionRoot(): CompositionRoot {
-        return (application as CustomApplication).getCompositionRoot()
+    private val controllerCompositionRoot: ControllerCompositionRoot by lazy {
+        ControllerCompositionRoot(
+            (application as CustomApplication).getCompositionRoot(),
+            this
+        )
+    }
+
+    protected fun getCompositionRoot(): ControllerCompositionRoot {
+        return controllerCompositionRoot
     }
 }
