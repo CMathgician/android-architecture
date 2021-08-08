@@ -10,6 +10,7 @@ import retrofit2.Response
 
 class FetchQuestionDetailsUseCase(private val stackoverflowApi: StackoverflowApi) :
     BaseObservable<FetchQuestionDetailsUseCase.Listener>() {
+
     interface Listener {
         fun onQuestionDetailsFetched(questionDetails: QuestionDetails)
         fun onQuestionDetailsFetchFailed()
