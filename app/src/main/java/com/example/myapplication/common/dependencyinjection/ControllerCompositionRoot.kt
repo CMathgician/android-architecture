@@ -3,6 +3,7 @@ package com.example.myapplication.common.dependencyinjection
 import android.app.Activity
 import android.view.LayoutInflater
 import com.example.myapplication.networking.StackoverflowApi
+import com.example.myapplication.questions.FetchQuestionDetailsUseCase
 import com.example.myapplication.screens.common.ViewMvcFactory
 
 class ControllerCompositionRoot(
@@ -15,4 +16,7 @@ class ControllerCompositionRoot(
     private fun getLayoutInflater(): LayoutInflater = LayoutInflater.from(activity)
 
     fun getViewMvcFactory(): ViewMvcFactory = ViewMvcFactory(getLayoutInflater())
+
+    fun getFetchQuestionDetailsUseCase(): FetchQuestionDetailsUseCase =
+        FetchQuestionDetailsUseCase(getStackoverflowApi())
 }
