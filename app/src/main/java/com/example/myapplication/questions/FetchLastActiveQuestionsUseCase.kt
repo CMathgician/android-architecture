@@ -14,8 +14,8 @@ class FetchLastActiveQuestionsUseCase(private val stackoverflowApi: Stackoverflo
     BaseObservable<FetchLastActiveQuestionsUseCase.Listener>() {
 
     interface Listener {
-        fun onLastActiveQuestionsFetchFailed()
         fun onLastActiveQuestionsFetched(questions: List<Question>)
+        fun onLastActiveQuestionsFetchFailed()
     }
 
     fun fetchLastActiveQuestionsAndNotify() {

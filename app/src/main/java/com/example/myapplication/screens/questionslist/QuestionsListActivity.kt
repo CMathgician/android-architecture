@@ -28,6 +28,7 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener,
     override fun onStart() {
         super.onStart()
         fetchLastActiveQuestionsUseCase.registerListener(this)
+        viewMvc.showProgressIndication()
         fetchLastActiveQuestionsUseCase.fetchLastActiveQuestionsAndNotify()
     }
 
@@ -40,11 +41,13 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener,
         QuestionDetailsActivity.start(this, question.id)
     }
 
-    override fun onLastActiveQuestionsFetchFailed() {
-        Toast.makeText(this, R.string.error_network_call_failed, Toast.LENGTH_SHORT).show()
+    override fun onLastActiveQuestionsFetched(questions: List<Question>) {
+        viewMvc.hideProgressIndication()
+        viewMvc.bindQuestions(questions)
     }
 
-    override fun onLastActiveQuestionsFetched(questions: List<Question>) {
-        viewMvc.bindQuestions(questions)
+    override fun onLastActiveQuestionsFetchFailed() {
+        viewMvc.hideProgressIndication()
+        Toast.makeText(this, R.string.error_network_call_failed, Toast.LENGTH_SHORT).show()
     }
 }

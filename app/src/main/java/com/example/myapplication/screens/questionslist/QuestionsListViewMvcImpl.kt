@@ -1,7 +1,9 @@
 package com.example.myapplication.screens.questionslist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -18,6 +20,7 @@ class QuestionsListViewMvcImpl(
     QuestionsListViewMvc, QuestionsRecyclerAdapter.Listener {
 
     private var recyclerView: RecyclerView
+    private var progressBar: ProgressBar
     private var adapter: QuestionsRecyclerAdapter
 
     init {
@@ -26,11 +29,19 @@ class QuestionsListViewMvcImpl(
         recyclerView.layoutManager = LinearLayoutManager(getContext())
         adapter = QuestionsRecyclerAdapter(this, viewMvcFactory)
         recyclerView.adapter = adapter
-
+        progressBar = findViewById(R.id.progress_bar)
     }
 
     override fun bindQuestions(questions: List<Question>) {
         adapter.bindQuestions(questions)
+    }
+
+    override fun showProgressIndication() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgressIndication() {
+        progressBar.visibility = View.GONE
     }
 
     override fun onQuestionClicked(question: Question) {
