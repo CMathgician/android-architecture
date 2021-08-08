@@ -1,4 +1,4 @@
-package com.example.myapplication.screens.common
+package com.example.myapplication.screens.common.screennavigator
 
 import android.content.Context
 import com.example.myapplication.screens.questiondetails.QuestionDetailsActivity

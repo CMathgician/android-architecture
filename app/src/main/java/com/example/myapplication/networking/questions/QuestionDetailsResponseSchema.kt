@@ -1,4 +1,4 @@
-package com.example.myapplication.networking
+package com.example.myapplication.networking.questions
 
 import com.google.gson.annotations.SerializedName
 

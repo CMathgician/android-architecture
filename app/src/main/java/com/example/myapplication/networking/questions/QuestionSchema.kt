@@ -1,5 +1,6 @@
-package com.example.myapplication.networking
+package com.example.myapplication.networking.questions
 
+import com.example.myapplication.networking.owners.OwnerSchema
 import com.google.gson.annotations.SerializedName
 
 data class QuestionSchema(

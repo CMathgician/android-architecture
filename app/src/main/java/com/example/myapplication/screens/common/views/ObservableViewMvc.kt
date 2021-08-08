@@ -1,4 +1,4 @@
-package com.example.myapplication.screens.common
+package com.example.myapplication.screens.common.views
 
 interface ObservableViewMvc<ListenerType> : BaseViewMvc {
     fun registerListener(listener: ListenerType)

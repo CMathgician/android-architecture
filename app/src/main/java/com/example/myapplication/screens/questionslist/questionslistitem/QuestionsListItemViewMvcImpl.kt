@@ -1,12 +1,12 @@
-package com.example.myapplication.screens.questionslist
+package com.example.myapplication.screens.questionslist.questionslistitem
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.myapplication.R
 import com.example.myapplication.questions.Question
-import com.example.myapplication.screens.common.BaseObservableViewMvcImpl
-import com.example.myapplication.screens.questionslist.QuestionsListItemViewMvc.Listener
+import com.example.myapplication.screens.common.views.BaseObservableViewMvcImpl
+import com.example.myapplication.screens.questionslist.questionslistitem.QuestionsListItemViewMvc.Listener
 
 class QuestionsListItemViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) :
     BaseObservableViewMvcImpl<Listener>(),

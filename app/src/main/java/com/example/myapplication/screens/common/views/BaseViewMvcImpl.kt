@@ -1,4 +1,4 @@
-package com.example.myapplication.screens.common
+package com.example.myapplication.screens.common.views
 
 import android.content.Context
 import android.view.View

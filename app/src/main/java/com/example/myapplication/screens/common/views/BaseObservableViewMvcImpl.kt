@@ -1,4 +1,4 @@
-package com.example.myapplication.screens.common
+package com.example.myapplication.screens.common.views
 
 import java.util.*
 import kotlin.collections.HashSet

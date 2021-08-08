@@ -1,7 +1,7 @@
 package com.example.myapplication.screens.questionslist
 
 import android.os.Bundle
-import com.example.myapplication.screens.common.BaseActivity
+import com.example.myapplication.screens.common.controllers.BaseActivity
 
 class QuestionsListActivity : BaseActivity() {
 

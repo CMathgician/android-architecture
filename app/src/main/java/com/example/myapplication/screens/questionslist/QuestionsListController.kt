@@ -2,13 +2,13 @@ package com.example.myapplication.screens.questionslist
 
 import com.example.myapplication.questions.FetchLastActiveQuestionsUseCase
 import com.example.myapplication.questions.Question
-import com.example.myapplication.screens.common.MessagesDisplayer
-import com.example.myapplication.screens.common.ScreenNavigator
+import com.example.myapplication.screens.common.toastshelper.ToastsHelper
+import com.example.myapplication.screens.common.screennavigator.ScreenNavigator
 
 class QuestionsListController(
     private val fetchLastActiveQuestionsUseCase: FetchLastActiveQuestionsUseCase,
     private val screenNavigator: ScreenNavigator,
-    private val messagesDisplayer: MessagesDisplayer
+    private val toastsHelper: ToastsHelper
 ) :
     QuestionsListViewMvc.Listener,
     FetchLastActiveQuestionsUseCase.Listener {
@@ -43,6 +43,6 @@ class QuestionsListController(
 
     override fun onLastActiveQuestionsFetchFailed() {
         viewMvc.hideProgressIndication()
-        messagesDisplayer.showUseCaseError()
+        toastsHelper.showUseCaseError()
     }
 }

@@ -1,7 +1,7 @@
 package com.example.myapplication.screens.questionslist
 
 import com.example.myapplication.questions.Question
-import com.example.myapplication.screens.common.ObservableViewMvc
+import com.example.myapplication.screens.common.views.ObservableViewMvc
 
 interface QuestionsListViewMvc : ObservableViewMvc<QuestionsListViewMvc.Listener> {
     interface Listener {

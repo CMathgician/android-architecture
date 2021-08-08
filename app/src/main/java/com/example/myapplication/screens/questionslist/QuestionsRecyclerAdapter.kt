@@ -1,10 +1,10 @@
 package com.example.myapplication.screens.questionslist
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.questions.Question
 import com.example.myapplication.screens.common.ViewMvcFactory
+import com.example.myapplication.screens.questionslist.questionslistitem.QuestionsListItemViewMvc
 
 class QuestionsRecyclerAdapter(
     private val listener: Listener,

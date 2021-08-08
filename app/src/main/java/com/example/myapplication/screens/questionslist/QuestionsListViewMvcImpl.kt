@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.questions.Question
-import com.example.myapplication.screens.common.BaseObservableViewMvcImpl
+import com.example.myapplication.screens.common.views.BaseObservableViewMvcImpl
 import com.example.myapplication.screens.common.ViewMvcFactory
 import com.example.myapplication.screens.questionslist.QuestionsListViewMvc.Listener
 

@@ -1,6 +1,5 @@
 package com.example.myapplication.screens.questiondetails
 
-import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.myapplication.R
 import com.example.myapplication.questions.QuestionDetails
-import com.example.myapplication.screens.common.BaseViewMvcImpl
+import com.example.myapplication.screens.common.views.BaseViewMvcImpl
 
 class QuestionDetailsViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) : BaseViewMvcImpl(),
     QuestionDetailsViewMvc {

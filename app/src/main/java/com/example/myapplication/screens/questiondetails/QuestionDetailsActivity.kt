@@ -3,12 +3,10 @@ package com.example.myapplication.screens.questiondetails
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import com.example.myapplication.R
 import com.example.myapplication.questions.FetchQuestionDetailsUseCase
 import com.example.myapplication.questions.QuestionDetails
-import com.example.myapplication.screens.common.BaseActivity
-import com.example.myapplication.screens.common.MessagesDisplayer
+import com.example.myapplication.screens.common.controllers.BaseActivity
+import com.example.myapplication.screens.common.toastshelper.ToastsHelper
 
 class QuestionDetailsActivity : BaseActivity(), FetchQuestionDetailsUseCase.Listener {
 
@@ -16,14 +14,14 @@ class QuestionDetailsActivity : BaseActivity(), FetchQuestionDetailsUseCase.List
 
     private lateinit var viewMvc: QuestionDetailsViewMvc
 
-    private lateinit var messagesDisplayer: MessagesDisplayer
+    private lateinit var toastsHelper: ToastsHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         fetchQuestionDetailsUseCase = getCompositionRoot().getFetchQuestionDetailsUseCase()
         viewMvc = getCompositionRoot().getViewMvcFactory().getQuestionDetailsViewMvc(null)
-        messagesDisplayer = getCompositionRoot().getMessagesDisplayer()
+        toastsHelper = getCompositionRoot().getMessagesDisplayer()
 
         setContentView(viewMvc.getRootView())
     }
@@ -64,6 +62,6 @@ class QuestionDetailsActivity : BaseActivity(), FetchQuestionDetailsUseCase.List
 
     override fun onQuestionDetailsFetchFailed() {
         viewMvc.hideProgressIndication()
-        messagesDisplayer.showUseCaseError()
+        toastsHelper.showUseCaseError()
     }
 }

@@ -1,5 +1,7 @@
 package com.example.myapplication.networking
 
+import com.example.myapplication.networking.questions.QuestionDetailsResponseSchema
+import com.example.myapplication.networking.questions.QuestionsListResponseSchema
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

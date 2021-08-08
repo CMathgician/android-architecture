@@ -2,8 +2,8 @@ package com.example.myapplication.questions
 
 import com.example.myapplication.common.BaseObservable
 import com.example.myapplication.common.Constants
-import com.example.myapplication.networking.QuestionSchema
-import com.example.myapplication.networking.QuestionsListResponseSchema
+import com.example.myapplication.networking.questions.QuestionSchema
+import com.example.myapplication.networking.questions.QuestionsListResponseSchema
 import com.example.myapplication.networking.StackoverflowApi
 import retrofit2.Call
 import retrofit2.Callback

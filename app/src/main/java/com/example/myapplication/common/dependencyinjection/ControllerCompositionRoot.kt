@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import com.example.myapplication.networking.StackoverflowApi
 import com.example.myapplication.questions.FetchLastActiveQuestionsUseCase
 import com.example.myapplication.questions.FetchQuestionDetailsUseCase
-import com.example.myapplication.screens.common.MessagesDisplayer
-import com.example.myapplication.screens.common.ScreenNavigator
+import com.example.myapplication.screens.common.toastshelper.ToastsHelper
+import com.example.myapplication.screens.common.screennavigator.ScreenNavigator
 import com.example.myapplication.screens.common.ViewMvcFactory
 import com.example.myapplication.screens.questionslist.QuestionsListController
 
@@ -40,5 +40,5 @@ class ControllerCompositionRoot(
 
     fun getScreenNavigator(): ScreenNavigator = ScreenNavigator(getContext())
 
-    fun getMessagesDisplayer(): MessagesDisplayer = MessagesDisplayer(getContext())
+    fun getMessagesDisplayer(): ToastsHelper = ToastsHelper(getContext())
 }

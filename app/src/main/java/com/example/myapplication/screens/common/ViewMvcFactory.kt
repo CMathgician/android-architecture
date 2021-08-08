@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.myapplication.screens.questiondetails.QuestionDetailsViewMvc
 import com.example.myapplication.screens.questiondetails.QuestionDetailsViewMvcImpl
-import com.example.myapplication.screens.questionslist.QuestionsListItemViewMvc
-import com.example.myapplication.screens.questionslist.QuestionsListItemViewMvcImpl
+import com.example.myapplication.screens.questionslist.questionslistitem.QuestionsListItemViewMvc
+import com.example.myapplication.screens.questionslist.questionslistitem.QuestionsListItemViewMvcImpl
 import com.example.myapplication.screens.questionslist.QuestionsListViewMvc
 import com.example.myapplication.screens.questionslist.QuestionsListViewMvcImpl
 
@@ -15,7 +15,7 @@ class ViewMvcFactory(private val layoutInflater: LayoutInflater) {
         return QuestionsListViewMvcImpl(layoutInflater, parent, this)
     }
 
-    fun getQuestionListItemViewMvc(parent: ViewGroup?):QuestionsListItemViewMvc {
+    fun getQuestionListItemViewMvc(parent: ViewGroup?): QuestionsListItemViewMvc {
         return QuestionsListItemViewMvcImpl(layoutInflater, parent)
     }
 
