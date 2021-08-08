@@ -1,7 +1,6 @@
 package com.example.myapplication.screens.questionslist
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.common.Constants
@@ -13,8 +12,6 @@ import com.example.myapplication.screens.common.BaseActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
@@ -26,11 +23,10 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewMvc = QuestionsListViewMvcImpl(LayoutInflater.from(this), null)
+        viewMvc = getCompositionRoot().getViewMvcFactory().getQuestionsListViewMvc(null)
         viewMvc.registerListener(this)
 
         stackoverflowApi = getCompositionRoot().getStackoverflowApi()
-
 
         setContentView(viewMvc.getRootView())
     }
