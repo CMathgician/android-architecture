@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.questions.Question
+import com.example.myapplication.screens.common.ViewMvcFactory
 
 class QuestionsRecyclerAdapter(
-    private val inflater: LayoutInflater,
-    private val listener: Listener
+    private val listener: Listener,
+    private val viewMvcFactory: ViewMvcFactory
 ) :
     RecyclerView.Adapter<QuestionsRecyclerAdapter.MyViewHolder>(),
     QuestionsListItemViewMvc.Listener {
@@ -27,7 +28,7 @@ class QuestionsRecyclerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val viewMvc: QuestionsListItemViewMvc = QuestionsListItemViewMvcImpl(inflater, parent)
+        val viewMvc: QuestionsListItemViewMvc = viewMvcFactory.getQuestionListItemViewMvc(parent)
         viewMvc.registerListener(this)
         return MyViewHolder(viewMvc)
     }

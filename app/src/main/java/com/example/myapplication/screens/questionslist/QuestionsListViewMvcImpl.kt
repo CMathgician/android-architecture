@@ -1,19 +1,20 @@
 package com.example.myapplication.screens.questionslist
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.questions.Question
 import com.example.myapplication.screens.common.BaseObservableViewMvcImpl
-import com.example.myapplication.screens.common.BaseViewMvcImpl
+import com.example.myapplication.screens.common.ViewMvcFactory
 import com.example.myapplication.screens.questionslist.QuestionsListViewMvc.Listener
 
-class QuestionsListViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) : BaseObservableViewMvcImpl<Listener>(),
+class QuestionsListViewMvcImpl(
+    inflater: LayoutInflater,
+    parent: ViewGroup?,
+    viewMvcFactory: ViewMvcFactory
+) : BaseObservableViewMvcImpl<Listener>(),
     QuestionsListViewMvc, QuestionsRecyclerAdapter.Listener {
 
     private var recyclerView: RecyclerView
@@ -23,7 +24,7 @@ class QuestionsListViewMvcImpl(inflater: LayoutInflater, parent: ViewGroup?) : B
         setRootView(inflater.inflate(R.layout.questions_list, parent, false))
         recyclerView = findViewById(R.id.recycler_questions)
         recyclerView.layoutManager = LinearLayoutManager(getContext())
-        adapter = QuestionsRecyclerAdapter(inflater, this)
+        adapter = QuestionsRecyclerAdapter(this, viewMvcFactory)
         recyclerView.adapter = adapter
 
     }
