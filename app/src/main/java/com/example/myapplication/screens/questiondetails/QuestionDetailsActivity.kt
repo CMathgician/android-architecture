@@ -8,6 +8,7 @@ import com.example.myapplication.R
 import com.example.myapplication.questions.FetchQuestionDetailsUseCase
 import com.example.myapplication.questions.QuestionDetails
 import com.example.myapplication.screens.common.BaseActivity
+import com.example.myapplication.screens.common.MessagesDisplayer
 
 class QuestionDetailsActivity : BaseActivity(), FetchQuestionDetailsUseCase.Listener {
 
@@ -15,11 +16,14 @@ class QuestionDetailsActivity : BaseActivity(), FetchQuestionDetailsUseCase.List
 
     private lateinit var viewMvc: QuestionDetailsViewMvc
 
+    private lateinit var messagesDisplayer: MessagesDisplayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         fetchQuestionDetailsUseCase = getCompositionRoot().getFetchQuestionDetailsUseCase()
         viewMvc = getCompositionRoot().getViewMvcFactory().getQuestionDetailsViewMvc(null)
+        messagesDisplayer = getCompositionRoot().getMessagesDisplayer()
 
         setContentView(viewMvc.getRootView())
     }
@@ -60,6 +64,6 @@ class QuestionDetailsActivity : BaseActivity(), FetchQuestionDetailsUseCase.List
 
     override fun onQuestionDetailsFetchFailed() {
         viewMvc.hideProgressIndication()
-        Toast.makeText(this, R.string.error_network_call_failed, Toast.LENGTH_SHORT).show()
+        messagesDisplayer.showUseCaseError()
     }
 }
