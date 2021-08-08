@@ -1,4 +1,4 @@
-package com.example.myapplication.screens.common.dependencyinjection
+package com.example.myapplication.common.dependencyinjection
 
 import com.example.myapplication.common.Constants
 import com.example.myapplication.networking.StackoverflowApi

@@ -1,7 +1,7 @@
 package com.example.myapplication
 
 import android.app.Application
-import com.example.myapplication.screens.common.dependencyinjection.CompositionRoot
+import com.example.myapplication.common.dependencyinjection.CompositionRoot
 
 class CustomApplication: Application() {
 

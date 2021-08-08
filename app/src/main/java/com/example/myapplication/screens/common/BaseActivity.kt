@@ -2,7 +2,7 @@ package com.example.myapplication.screens.common
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.CustomApplication
-import com.example.myapplication.screens.common.dependencyinjection.CompositionRoot
+import com.example.myapplication.common.dependencyinjection.CompositionRoot
 
 open class BaseActivity: AppCompatActivity() {
 
