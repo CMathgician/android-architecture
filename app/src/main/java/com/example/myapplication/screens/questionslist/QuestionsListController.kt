@@ -1,12 +1,9 @@
 package com.example.myapplication.screens.questionslist
 
-import android.widget.Toast
-import com.example.myapplication.R
 import com.example.myapplication.questions.FetchLastActiveQuestionsUseCase
 import com.example.myapplication.questions.Question
 import com.example.myapplication.screens.common.MessagesDisplayer
 import com.example.myapplication.screens.common.ScreenNavigator
-import com.example.myapplication.screens.questiondetails.QuestionDetailsActivity
 
 class QuestionsListController(
     private val fetchLastActiveQuestionsUseCase: FetchLastActiveQuestionsUseCase,
