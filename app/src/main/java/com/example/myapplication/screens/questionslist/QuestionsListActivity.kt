@@ -9,6 +9,7 @@ import com.example.myapplication.networking.QuestionsListResponseSchema
 import com.example.myapplication.networking.StackoverflowApi
 import com.example.myapplication.questions.Question
 import com.example.myapplication.screens.common.BaseActivity
+import com.example.myapplication.screens.questiondetails.QuestionDetailsActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,10 +24,9 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        stackoverflowApi = getCompositionRoot().getStackoverflowApi()
         viewMvc = getCompositionRoot().getViewMvcFactory().getQuestionsListViewMvc(null)
         viewMvc.registerListener(this)
-
-        stackoverflowApi = getCompositionRoot().getStackoverflowApi()
 
         setContentView(viewMvc.getRootView())
     }
@@ -44,7 +44,7 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
                     response: Response<QuestionsListResponseSchema>
                 ) {
                     if (response.isSuccessful) {
-                        response.body()?.questions?.let { bindQuestions(it) }
+                        response.body()?.let { bindQuestions(it.questions) }
                     } else {
                         networkCallFailed()
                     }
@@ -74,6 +74,6 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
     }
 
     override fun onQuestionClicked(question: Question) {
-        Toast.makeText(this, question.title, Toast.LENGTH_SHORT).show()
+        QuestionDetailsActivity.start(this, question.id)
     }
 }

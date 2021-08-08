@@ -9,6 +9,6 @@ interface StackoverflowApi {
     @GET("/questions?order=desc&sort=activity&site=stackoverflow")
     fun fetchLastActiveQuestions(@Query("pagesize") pageSize: Int?): Call<QuestionsListResponseSchema>
 
-    @GET("/questions/{questionId}?site=stackoverflow")
+    @GET("/questions/{questionId}?site=stackoverflow&filter=withbody")
     fun fetchQuestionDetails(@Path("questionId") questionId: String): Call<QuestionDetailsResponseSchema>
 }

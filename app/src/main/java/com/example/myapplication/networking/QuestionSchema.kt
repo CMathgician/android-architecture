@@ -31,6 +31,9 @@ data class QuestionSchema(
     @field:SerializedName("title")
     val title: String? = null,
 
+    @field:SerializedName("body")
+    val body: String? = null,
+
     @field:SerializedName("question_id")
     val questionId: Int? = null,
 
